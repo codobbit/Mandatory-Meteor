@@ -1,9 +1,12 @@
-<form *ngIf="wish" (ngSubmit)="reserveWish(wish)">
+<div class="container">
+<form *ngIf="wish" (ngSubmit)="saveWish()">
     <label>Title</label>
     <input type="text" [(ngModel)]="wish.title" name="title">
-    <button type="submit">Reserve</button>
+    <button class="btn btn-primary" type="submit">Save</button>
+    <a class="btn btn-secondary" [routerLink]="['/']">Cancel</a>
     <!--<label>Creation Date</label>-->
     <!--<input type="datetime" [(ngModel)]="wish.createdOn" name="createdOn">-->
 </form>
 
 <p>{{wish.createdOn}}</p>
+</div>

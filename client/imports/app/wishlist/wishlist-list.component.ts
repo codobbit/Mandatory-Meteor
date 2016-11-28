@@ -6,16 +6,30 @@ import { Wishlist } from '../../../../both/collections/wishlist.collections';
 import { Wish } from '../../../../both/models/wish.model';
 
 import template from './wishlist-list.component.html';
+import {InjectUser} from "angular2-meteor-accounts-ui";
+import {zone} from "meteor-rxjs";
 
 @Component({
     selector: 'wishlist-list',
     template
 })
+@InjectUser('user')
 export class WishlistListComponent implements CanActivate{
     wishlist: Observable<Wish[]>;
+    user: Meteor.User;
+
 
     constructor() {
-        this.wishlist = Wishlist.find({}).zone();
+        if (Meteor.userId()) {
+            var  userid=Meteor.userId();
+            this.wishlist = Wishlist.find({"owner": userid}).zone();
+            console.log(this.wishlist);
+        }else {
+            this.wishlist = Wishlist.find({});
+            console.log("No user");
+            console.log(this.wishlist);
+
+        }
     }
 
     removeWish(wish: Wish): void {

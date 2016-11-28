@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { Meteor } from 'meteor/meteor';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
-import { InjectUser } from 'angular2-meteor-accounts-ui';
 
 
 import { Wishlist } from '../../../../both/collections/wishlist.collections';
@@ -13,10 +12,8 @@ import template from './wishlist-form.components.html';
     template
 })
 
-@InjectUser('user')
 export class WishlistFormComponent implements OnInit {
     addForm: FormGroup;
-    user: Meteor.User;
 
     constructor(
         private formBuilder: FormBuilder
