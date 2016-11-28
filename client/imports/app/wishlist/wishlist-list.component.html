@@ -1,11 +1,34 @@
-<div>
-    <login-buttons></login-buttons>
-    <wishlist-form></wishlist-form>
-    <ul>
-        <li *ngFor="let wish of wishlist | async">
-            <a [routerLink]="['/wish', wish._id]">{{wish.title}}</a>
-            <p>{{wish.createdOn}}</p>
-            <button (click)="removeWish(wish)">X</button>
-        </li>
-    </ul>
+<div class="row">
+    <div class="col-md-12">
+        <div class="jumbotron">
+            <h3>Tell your friends what you'd like.</h3>
+            <div *ngIf="!user">You need to login to create new parties!</div>
+            <wishlist-form></wishlist-form>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <ul class="list-group">
+            <li *ngFor="let wish of wishlist | async" class="list-group-item">
+                <a [routerLink]="['/wish', wish._id]">
+                <div class="row">
+                    <div class="col-sm-10">
+                        <h2>{{wish.title}}
+                        </h2>
+                        <p>{{wish.createdOn}}</p>
+                    </div>
+                    <div class="col-sm-2">
+                        <button type="button" class="btn btn-danger btn-block pull-right" (click)="removeWish(wish)">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="btn btn-primary btn-block pull-right" (click)="reserveWish(wish)">
+                            <i class="fa fa-gift" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+                </a>
+            </li>
+        </ul>
+    </div>
 </div>

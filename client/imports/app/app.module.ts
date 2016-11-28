@@ -21,6 +21,9 @@ import { WISHLIST_DECLARATIONS } from './wishlist'
         AppComponent,
         ...WISHLIST_DECLARATIONS
     ],
+    providers: [
+        ...ROUTES_PROVIDERS
+    ],
     bootstrap: [
         AppComponent
     ]

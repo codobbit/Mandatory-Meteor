@@ -30,12 +30,23 @@ export class WishDetailsComponent implements OnInit, OnDestroy, CanActivate{
     }
 
     saveWish() {
+        if (!Meteor.userId()) {
+            alert('Please log in to change this wish');
+            return;
+        }
+
         Wishlist.update(this.wish._id, {
             $set: {
                 name: this.wish.title
             }
         });
     }
+
+    reserveWish(wish: Wish){
+        $(".btn-danger").attr("disabled");
+
+    }
+
     canActivate() {
         const wish = Wishlist.findOne(this.wishId);
         return (wish && wish.owner == Meteor.userId());

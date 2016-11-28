@@ -1,7 +1,7 @@
-<form *ngIf="wish">
+<form *ngIf="wish" (ngSubmit)="reserveWish(wish)">
     <label>Title</label>
     <input type="text" [(ngModel)]="wish.title" name="title">
-
+    <button type="submit">Reserve</button>
     <!--<label>Creation Date</label>-->
     <!--<input type="datetime" [(ngModel)]="wish.createdOn" name="createdOn">-->
 </form>
