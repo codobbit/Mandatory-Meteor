@@ -1,0 +1,11 @@
+<div>
+    <login-buttons></login-buttons>
+    <wishlist-form></wishlist-form>
+    <ul>
+        <li *ngFor="let wish of wishlist | async">
+            <a [routerLink]="['/wish', wish._id]">{{wish.title}}</a>
+            <p>{{wish.createdOn}}</p>
+            <button (click)="removeWish(wish)">X</button>
+        </li>
+    </ul>
+</div>

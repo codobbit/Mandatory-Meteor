@@ -1,0 +1,9 @@
+<form *ngIf="wish">
+    <label>Title</label>
+    <input type="text" [(ngModel)]="wish.title" name="title">
+
+    <!--<label>Creation Date</label>-->
+    <!--<input type="datetime" [(ngModel)]="wish.createdOn" name="createdOn">-->
+</form>
+
+<p>{{wish.createdOn}}</p>
